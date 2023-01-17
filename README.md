@@ -3,17 +3,22 @@ Alphabet Soup, a philanthropic foundation dedicated to helping organizations tha
 
 For this project, the data scientist team conducted the following:
 
-Preprocessed Data for a Neural Network Model
-Compiled, Trained, and Evaluated the Model
-Saved model weights and saved the results to file
-Optimized the Model and made comparisons to other machine learning models
+>Preprocessed Data for a Neural Network Model
 
-Since funding relies primarily factors such as success and ability to pay back (related sometimes), we decided the target for our model is success since it is charity based. To reach our output, we initially included all data but binned 2 columns: classification, and application type to minimize observation errors. Once completed, it was standard procedure with splitting the data set, scaling, and then fitting the data. Our initial neural network is shown below. Data was also saved every 5 epochs.
+>Compiled, Trained, and Evaluated the Model
 
-Since funding relies primarily factors such as success and ability to pay back (related sometimes), we decided the target for our model is success since it is charity based. To reach our output, we initially included all data but binned 2 columns: classification, and application type to minimize observation errors. Once completed, it was standard procedure with splitting the data set, scaling, and then fitting the data. Our initial neural network is shown below. Data was also saved every 5 epochs.
+>Saved model weights and saved the results to file
 
+>Summary
 
-To improve our model several appraoches were taken. Removed 2 columns that may not provide relevant information such as 'Use case other' and 'Affil other', additional layers were then added with more neurons, and lastly, some of the activation functions of the hidden layers are changed to sigmoid. While each iteration of the new NN is an overall improvement from the first model, its important to note that our 2nd model performed the best with an accuracy of 72%.
+## Preprocessed Data for a Neural Network Model
+Data Prepared for a Neural Network Model The Model Was Computed, Trained, and Evaluated Added model weights and results to a file. model optimization and comparisons with different machine learning models EIN and NAME columns have been removed. Columns with more than 10 unique values were grouped Categorical variables were coded using one-hot coding. Preprocessed data is split into features and target sequences .The preprocessed data is divided into a training data set and a test data set. Numbers were normalized with the StandardScaler() module
+
+We determined that since our strategy is based on charity and funding is mostly dependent on performance and repayment capacity (which are occasionally related), the aim should be success. In order to reduce observation errors, we initially included all data for our report but binned two columns: categorization and application type. Once finished, the process of dividing the data set, scaling it, and then fitting the data was routine. The image below is our first neural network. Every five epochs, data was also saved.
+
+## Compiled, Trained, and Evaluated the Model
+
+Multiple approaches were used to enhance our model. Additional layers with more neurons were then added, 2 columns that would not provide pertinent information, such as "Use case other" and "Affil other," were removed, and finally, part of the hidden layers' activation functions were altered to sigmoid. It's crucial to note that our second model fared the best with an accuracy of 72%, even if each iteration of the new NN represents an overall improvement over the previous model.Number of layers, number of neurons per layer and activation function are defined.An output layer with an activation function is created. I have the output of the structure of the model and have model loss and accuracy issues. Model weights are saved every 5 epochs. Results are saved in HDF5 files
 
 ```
  Model 1 optimization
@@ -41,15 +46,22 @@ nn.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
 fit_model= nn.fit(X_train_scaled, y_train, epochs=50, verbose=2)
 
 ```
+## Saved model weights and saved the results to file
+If the model is optimized and the prediction accuracy is improved to 75% or higher, then I have a working code that makes 3 tries to improve the performance of the model using the following steps:
+>>Noisy variables are removed from the function
+Additional neurons are added to the hidden layer
+An additional hidden layer is added
+Activation function for hidden or output layers changed for optimization
 To decide on neuron number, arbitrary values were intially chosen and was primarily trial and error but unforunately could not reach 75% although progress is close.
+
 ```
 Epoch 50/50
 804/804 - 1s - loss: 0.5300 - accuracy: 0.7435 - 1s/epoch - 1ms/step
 268/268 - 1s - loss: 0.5596 - accuracy: 0.7208 - 536ms/epoch - 2ms/step
 Loss: 0.5596364140510559, Accuracy: 0.7208163142204285
 ```
-Summary
-Overall, this module highlights 1 important note when it comes to NN's. Too many additional changes aren't always good. The addition of sigmoid function greatly reduced our performance. To better improve this model, we should play around more with model 2 in terms of neuron numbers in each layer as it seems to have the most promising prediction. We can also consider removing other columns in affiliation and use case. Overall the model shows good promise and further optimizations can likely help reach the 75% thresh-hold
+## Summary
+Overall, this session emphasizes one crucial point regarding NNs. Adding too many new adjustments is not usually a smart idea. The sigmoid function's addition significantly decreased our performance. Model 2 appears to have the most promising forecast, thus we need experiment further with it in terms of the amount of neurons in each layer in order to improve this model. We might also think about deleting some of the affiliation and use case columns. Overall, the model is promising, and further improvements can probably assist in reaching the 75% threshold.
 ```
 Epoch 50/50
 804/804 [==============================] - 16s 19ms/step - loss: 4352.1768 - accuracy: 0.5910
@@ -57,11 +69,10 @@ Epoch 50/50
 Loss: 1.6284602880477905, Accuracy: 0.6929445862770081
 Results were lack luster and only achieved in accuracy score of 69%.
 ```
-To improve our model several appraoches were taken. Removed 2 columns that may not provide relevant information such as 'Use case other' and 'Affil other', additional layers were then added with more neurons, and lastly, some of the activation functions of the hidden layers are changed to sigmoid. While each iteration of the new NN is an overall improvement from the first model, its important to note that our 2nd model performed the best with an accuracy of 72%.
-
+Various approaches were attempted to enhance our model. 'Use case other' and 'Affil other' were eliminated as columns that would not include pertinent information. Next, further layers and neurons were created, and finally, some of the hidden layers' sigmoid activation functions were applied. It is crucial to note that our second model fared the best with an accuracy of 72%, even if each iteration of the new NN is an overall improvement from the previous model.
 
 
 To decide on neuron number, arbitrary values were intially chosen and was primarily trial and error but unforunately could not reach 75% although progress is close.
 
 Summary
-Overall, this module highlights 1 important note when it comes to NN's. Too many additional changes aren't always good. The addition of sigmoid function greatly reduced our performance. To better improve this model, we should play around more with model 2 in terms of neuron numbers in each layer as it seems to have the most promising prediction. We can also consider removing other columns in affiliation and use case. Overall the model shows good promise and further optimizations can likely help reach the 75% thresh-hold
+With regard to NNs, this module emphasizes 1 key point. There can be a point where there are too many changes. Our performance was significantly lowered by the sigmoid function. We should experiment more with model 2, which appears to have the most promising prediction, in terms of the number of neurons in each layer in order to improve this model. The removal of additional affiliation and use case columns is another option. The model appears promising overall, and further improvements may enable it to pass the 75% threshold.
